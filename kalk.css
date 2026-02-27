@@ -17,7 +17,7 @@ body{
 
 main{
     margin: auto;
-    margin-top: 100px;
+    margin-top: 50px;
     max-width: 40%;
     color: white;
     display: flex;
@@ -46,10 +46,76 @@ main{
     font-size: 30px;
     font-family: "League Spartan", sans-serif;
     font-weight: 700;
+    background-color: rgb(224, 219, 212);
+    color: rgb(68, 74, 90);
+    box-shadow: 
+    0 6px 0 #b4a597, 
+    0 8px 15px rgba(0,0,0,0.2);
+    transition: all 0.1s ease;
+    cursor: pointer;
+    border-style: none;
+    border-radius: 10px;
+}
+
+.input > button:active {
+  transform: translateY(4px);
+  box-shadow: 
+    0 2px 0 #b4a597,
+    0 3px 8px rgba(0,0,0,0.2);
+}
+
+.input > button:nth-child(4), 
+.input > button:nth-child(17){
+    background-color: rgb(100, 110, 150);
+    color: white;
+    box-shadow:
+    0 6px 0 #4f5b82,              /* hard underside */
+    0 8px 15px rgba(0,0,0,0.25);
+}
+
+
+.input > button:nth-child(4):active {
+  transform: translateY(4px);
+  box-shadow:
+    0 2px 0 #4f5b82,
+    0 3px 8px rgba(0,0,0,0.25);
+}
+
+.input > button:nth-child(17):active{
+  transform: translateY(4px);
+  box-shadow:
+    0 2px 0 #4f5b82,
+    0 3px 8px rgba(0,0,0,0.25);
+}
+
+.input > button:nth-child(17){
+    grid-column: span 2;
+}
+
+.input > button:last-child{
+    background-color: rgb(210, 70, 55);
+    grid-column: span 2;
+    color: white;
+    box-shadow:
+    0 6px 0 #a62e22,          
+    0 8px 15px rgba(0,0,0,0.25);
+  
+    transition: all 0.1s ease;
+}
+
+.input > button:last-child:active{
+    transform: translateY(4px);
+    box-shadow:
+    0 2px 0 #a62e22,
+    0 3px 8px rgba(0,0,0,0.25);
 }
 
 .input{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-
+    background-color: rgb(40, 49, 73);
+    width: 100%;
+    padding: 30px;
+    gap: 30px;
+    border-radius: 10px;
 }
