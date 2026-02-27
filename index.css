@@ -9,7 +9,11 @@ h2 {
 }
 body {
     
-    background-color: red;
+    background-image: url(media/bakgrunn.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;  
+    background-position: center;  
 }
 
 .bokser {
