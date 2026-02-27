@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=League+Spartan:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+img{
+    width: 100%;
+    display: block;
+}
+body{
+    background-color: rgb(61, 70, 98);
+    font-family: "League Spartan", sans-serif;
+}
+
+main{
+    margin: auto;
+    margin-top: 100px;
+    max-width: 40%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.h1{
+    font-size: 40px;
+}
+
+.output{
+    background-color: rgb(34, 31,49);
+    width: 100%;
+    padding: 35px;
+    border-radius: 10px;
+    text-align: end;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.input > button{
+    padding: 20px;
+    font-size: 30px;
+    font-family: "League Spartan", sans-serif;
+    font-weight: 700;
+}
+
+.input{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+}
