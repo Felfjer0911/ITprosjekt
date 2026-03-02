@@ -17,7 +17,7 @@ body{
 
 main{
     margin: auto;
-    margin-top: 50px;
+    margin-top: 15px;
     max-width: 40%;
     color: white;
     display: flex;
@@ -43,7 +43,7 @@ main{
 
 .input > button{
     padding: 20px;
-    font-size: 30px;
+    font-size: 35px;
     font-family: "League Spartan", sans-serif;
     font-weight: 700;
     background-color: rgb(224, 219, 212);
@@ -69,7 +69,7 @@ main{
     background-color: rgb(100, 110, 150);
     color: white;
     box-shadow:
-    0 6px 0 #4f5b82,              /* hard underside */
+    0 6px 0 #4f5b82,              
     0 8px 15px rgba(0,0,0,0.25);
 }
 

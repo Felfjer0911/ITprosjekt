@@ -10,28 +10,29 @@
     <main>
       <div class="h1"><h1>Kalkulator</h1></div>
       <div class="output">
-        <p>000 000</p>
+        <p>0</p>
       </div>
       <div class="input">
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-        <button>DEL</button>
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button>+</button>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>-</button>
-        <button>.</button>
-        <button>0</button>
-        <button>➗</button>
-        <button>x</button>
-        <button>RESET</button>
-        <button>=</button>
+        <button onclick="addNumber(7)">7</button>
+        <button onclick="addNumber(8)">8</button>
+        <button onclick="addNumber(9)">9</button>
+        <button onclick="del()">DEL</button>
+        <button onclick="addNumber(4)">4</button>
+        <button onclick="addNumber(5)">5</button>
+        <button onclick="addNumber(6)">6</button>
+        <button onclick="plus()">+</button>
+        <button onclick="addNumber(1)">1</button>
+        <button onclick="addNumber(2)">2</button>
+        <button onclick="addNumber(3)">3</button>
+        <button onclick="subtract()">-</button>
+        <button onclick="point()">.</button>
+        <button onclick="addNumber(0)">0</button>
+        <button onclick="qoutient()">➗</button>
+        <button onclick="multiply()">x</button>
+        <button onclick="reset()">RESET</button>
+        <button onclick="equal()">=</button>
       </div>
     </main>
+    <script src="kalk.js"></script>
   </body>
 </html>
