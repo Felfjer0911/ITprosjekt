@@ -130,4 +130,11 @@ function oppdater() {
     }
 }
 
-setInterval(oppdater, 16)
+let spillStartet = false
+
+window.addEventListener("scroll", function () {
+    if (window.scrollY > 300 && !spillStartet) {
+        spillStartet = true
+        setInterval(oppdater, 16)
+    }
+})
