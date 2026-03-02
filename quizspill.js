@@ -105,9 +105,14 @@ function oppdater() {
 
     const ballRect = ball.getBoundingClientRect()
     const barRect = bar.getBoundingClientRect()
-
+    
+    let barY = window.innerHeight * 0.9
     // Sprett på baren
-    if (kolliderer(ballRect, barRect)) {
+    if (
+        ballY + 100 >= barRect.top &&
+        ballX + 50 >= barRect.left &&
+        ballX + 50 <= barRect.right
+    ) {
         fartY = -Math.abs(fartY)
     }
 
