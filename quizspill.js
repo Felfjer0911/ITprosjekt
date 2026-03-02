@@ -20,8 +20,21 @@ let spørsmålIndeks = 0
 let pause = false
 
 
-const spørsmål = ["Hva er intergralet av ln x", "Hva tangens til 60 grader?", "Hva er neste tall i følgen?"]
-const fasiter = ["1", "2", "3"]
+const spørsmål = [
+    "Finn lengden av vektoren v = (2, -1, 2)",
+    "Hva er tan(60°)?",
+    "Er vinkelen mellom vektorene (1,2) og (3,-1) større eller mindre enn 90°? (oppgi: større eller mindre). Skalarproduktet er 1",
+    "Hva er neste tall i tallfølgen: 3, 6, 9, 12, ?",
+    "Finn prikkproduktet av vektorene (1,2,3) og (4,0,-1)"
+]
+
+const fasiter = [
+    "3",
+    "√3",
+    "mindre",
+    "15",
+    "1"
+]
 
 document.addEventListener("keydown", function (event) {
     if (event.key === "ArrowLeft") barX -= 30
@@ -105,7 +118,7 @@ function oppdater() {
 
     const ballRect = ball.getBoundingClientRect()
     const barRect = bar.getBoundingClientRect()
-    
+
     let barY = window.innerHeight * 0.9
     // Sprett på baren
     if (
