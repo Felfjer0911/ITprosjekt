@@ -36,9 +36,8 @@
         <div id="quiz-popup" class="skjult">
             <div id="quiz-boks">
                 <h2 id="quiz-spørsmål">Spørsmål her</h2>
-                <input type="text" id="quiz-input" onkeydown="handleEnter(event, currentFasit, this)"
-                    placeholder="Skriv svar...">
-                <button onclick="sjekkSvarMedInput(currentFasit, this)">Sjekk svar</button>
+                <input type="text" id="quiz-input" placeholder="Skriv svar...">
+                <button onclick="sjekkSvar()">Sjekk svar</button>
                 <button id="neste-knapp" class="skjult" onclick="lukkQuiz()">Neste</button>
             </div>
         </div>

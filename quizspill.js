@@ -21,19 +21,11 @@ let pause = false
 
 
 const spørsmål = [
-    "Finn lengden av vektoren v = (2, -1, 2)",
-    "Hva er tan(45°)?",
-    "Er vinkelen mellom vektorene (1,2) og (3,-1) større eller mindre enn 90°? (oppgi: større eller mindre). Skalarproduktet er 1",
-    "Hva er neste tall i tallfølgen: 3, 6, 9, 12, ?",
-    "Finn prikkproduktet av vektorene (1,2,3) og (4,0,-1)"
-]
-
-const fasiter = [
-    "3",
-    "1",
-    "mindre",
-    "15",
-    "1"
+    { tekst: "Finn lengden av vektoren v = (2, -1, 2)", fasit: "3" },
+    { tekst: "Hva er tan(45°)?", fasit: "1" },
+    { tekst: "Er vinkelen mellom vektorene (1,2) og (3,-1) større eller mindre enn 90°? (oppgi: større eller mindre). Skalarproduktet er 1", fasit: "mindre" },
+    { tekst: "Hva er neste tall i tallfølgen: 3, 6, 9, 12, ?", fasit: "15" },
+    { tekst: "Finn prikkproduktet av vektorene (1,2,3) og (4,0,-1)", fasit: "1" }
 ]
 
 document.addEventListener("keydown", function (event) {
@@ -65,12 +57,11 @@ function kolliderer(rect1, rect2) {
 
 
 function visQuiz() {
-
     if (spørsmålIndeks >= spørsmål.length) return
     pause = true
 
-    currentFasit = fasiter[spørsmålIndeks]
-    quizSpørsmål.textContent = spørsmål[spørsmålIndeks]
+    currentFasit = spørsmål[spørsmålIndeks].fasit
+    quizSpørsmål.textContent = spørsmål[spørsmålIndeks].tekst
     quizInput.value = ""
     quizInput.style.backgroundColor = ""
     nesteKnapp.classList.add("skjult")
@@ -82,26 +73,14 @@ function lukkQuiz() {
     spørsmålIndeks++
     pause = false
 }
-
-function sjekkSvarMedInput(fasit, elm) {
-    const inputElm = elm.previousElementSibling
-    const svar = inputElm.value
-
-    if (svar == fasit) {
-        inputElm.style.backgroundColor = "lightgreen"
-    } else {
-        inputElm.style.backgroundColor = "lightcoral"
-    }
-
+function sjekkSvar() {
+    const svar = quizInput.value
+    const riktig = svar == currentFasit
+    quizInput.style.backgroundColor = riktig ? "lightgreen" : "lightcoral"
     nesteKnapp.classList.remove("skjult")
 }
 
-function handleEnter(event, fasit, inputElm) {
-    if (event.keyCode === 13) {
-        const button = inputElm.nextElementSibling
-        sjekkSvarMedInput(fasit, button)
-    }
-}
+quizInput.addEventListener("keydown", e => { if (e.key === "Enter") sjekkSvar() })
 
 
 function oppdater() {
@@ -119,15 +98,10 @@ function oppdater() {
     const ballRect = ball.getBoundingClientRect()
     const barRect = bar.getBoundingClientRect()
 
-    let barY = window.innerHeight * 0.9
     // Sprett på baren
-    if (
-        ballY + 100 >= barRect.top &&
-        ballX + 50 >= barRect.left &&
-        ballX + 50 <= barRect.right
-    ) {
-        fartY = -Math.abs(fartY)
-    }
+   if (kolliderer(ballRect, barRect)) {
+    fartY = -Math.abs(fartY)
+}
 
     // Sjekk kollisjon med mål
     targets.forEach(target => {
