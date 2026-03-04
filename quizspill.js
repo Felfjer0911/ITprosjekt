@@ -22,7 +22,7 @@ let pause = false
 
 const spørsmål = [
     "Finn lengden av vektoren v = (2, -1, 2)",
-    "Hva er tan(60°)?",
+    "Hva er tan(45°)?",
     "Er vinkelen mellom vektorene (1,2) og (3,-1) større eller mindre enn 90°? (oppgi: større eller mindre). Skalarproduktet er 1",
     "Hva er neste tall i tallfølgen: 3, 6, 9, 12, ?",
     "Finn prikkproduktet av vektorene (1,2,3) og (4,0,-1)"
@@ -30,7 +30,7 @@ const spørsmål = [
 
 const fasiter = [
     "3",
-    "√3",
+    "1",
     "mindre",
     "15",
     "1"
