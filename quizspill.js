@@ -9,10 +9,18 @@ const nesteKnapp = document.getElementById("neste-knapp")
 
 let ballX = window.innerWidth / 2
 let ballY = window.innerHeight * 0.8
-let fartX = 2
-let fartY = -2
+let fartX = 3
+let fartY = -3
 
 let barX = window.innerWidth / 2 - 100
+
+targets.forEach(target => {
+    const randomTop = Math.random() * 60 + 5    // mellom 5% og 65% ned
+    const randomLeft = Math.random() * 80 + 10  // mellom 10% og 90% bortover
+    target.style.top = randomTop + "%"
+    target.style.left = randomLeft + "%"
+    target.style.position = "absolute"
+})
 
 
 let currentFasit = ""
@@ -99,9 +107,9 @@ function oppdater() {
     const barRect = bar.getBoundingClientRect()
 
     // Sprett på baren
-   if (kolliderer(ballRect, barRect)) {
-    fartY = -Math.abs(fartY)
-}
+    if (kolliderer(ballRect, barRect)) {
+        fartY = -Math.abs(fartY)
+    }
 
     // Sjekk kollisjon med mål
     targets.forEach(target => {
@@ -117,7 +125,7 @@ function oppdater() {
     })
 
     if (ballY > window.innerHeight) {
-        ball.classList.add("lost")
+        pause = true
         alert("Game over!")
     }
 }
