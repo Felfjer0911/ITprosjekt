@@ -14,12 +14,15 @@ let fartY = -3
 
 let barX = window.innerWidth / 2 - 100
 
-targets.forEach(target => {
+targets.forEach((target, indeks) => {
+    if (window.innerWidth < 900 && indeks >= 3) {
+        target.style.display = "none"
+        return
+    }
     const randomTop = Math.random() * 60 + 5    // mellom 5% og 65% ned
     const randomLeft = Math.random() * 80 + 10  // mellom 10% og 90% bortover
     target.style.top = randomTop + "%"
     target.style.left = randomLeft + "%"
-    target.style.position = "absolute"
 })
 
 
@@ -44,25 +47,13 @@ document.addEventListener("keydown", function (event) {
 
 
 function kolliderer(rect1, rect2) {
-    // finn midtpunktet til begge sirkler
-    let x1 = rect1.left + rect1.width / 2
-    let y1 = rect1.top + rect1.height / 2
-
-    let x2 = rect2.left + rect2.width / 2
-    let y2 = rect2.top + rect2.height / 2
-
-    // finn avstanden mellom dem
-    let dx = x1 - x2
-    let dy = y1 - y2
-    let avstand = Math.sqrt(dx * dx + dy * dy)
-
-    // kolliderer hvis avstanden er mindre enn begge radiusene lagt sammen
-    let radius1 = rect1.width / 2
-    let radius2 = rect2.width / 2
-
-    return avstand < radius1 + radius2
+    return (
+        rect1.left < rect2.right &&
+        rect1.right > rect2.left &&
+        rect1.top < rect2.bottom &&
+        rect1.bottom > rect2.top
+    )
 }
-
 
 function visQuiz() {
     if (spørsmålIndeks >= spørsmål.length) return
