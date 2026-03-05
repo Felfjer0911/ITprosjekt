@@ -1,13 +1,13 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+NZ+Basic+Guides&display=swap');
-h1 {
-    text-align: center;
-    font-family: "Bebas Neue", sans-serif;
-    font-weight: 350;
-    font-size: 80px;
-    font-style: normal;
-    color: blue;
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@700&family=Outfit:wght@300;400;500&display=swap');
+
+.hero h1 {
+    font-family: 'Fraunces', serif;
+    text-transform: uppercase;
+    color: palevioletred;
+    font-size: 85px;
+    padding-top: 40px;
 }
 
 h2 {
@@ -15,83 +15,80 @@ h2 {
     font-family: "Playwrite NZ Basic Guides", cursive;
     font-weight: 400;
     font-style: normal;
+
 }
-body {
-    
+
+.hero {
+    height: 100vh;
     background-image: url(media/bakgrunn.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover;  
-    background-position: center;  
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    position: relative;
+}
+
+.hero::before {
+    /* mørkt lag "oppå" bakgrunnsbildet - semi transparent */
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(216, 112, 147, 0.5);
+}
+
+.hero>* {
+    /* Disse tingene må ligge oppå det mørke laget */
+    z-index: 4;
 }
 
 .bokser {
     display: flex;
-    
     align-items: center;
     justify-content: space-around;
-
-    
+    gap: 40px;
+    margin-top: 40px;
 }
+
+.boks1,
+.boks2 {
+    height: 350px;
+    border: none;
+    border-radius: 20px;
+    width: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    transform: scale(1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
 
 .boks1 {
-    height: 300px;
-    
-    border: 3px black solid;
-    border-radius: 20px;
-    
-    width: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 40px;
-
-    transform: scale(1);
-    transition: transform 1s;
-    
     background-image: url(media/kalkbakgrun.png);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;  
-    background-position: center;     
-
 }
 
-.boks2 {
-    height: 300px;
-    
-    border: 3px black solid;
-    border-radius: 20px;
-    
-    width: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 40px;
+.boks2{
+    background-image: url(media/quiz.png);
+}
 
-    transform: scale(1);
-    transition: transform 1s;
-    
-    background-image: ;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;  
-    background-position: center;
+.boks1:hover,
+.boks2:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
 }
 
 a {
     color: inherit;
     text-decoration: none
-    
-    
 }
-
-.boks1:hover {
-  transform: scale(1.05);
-}
-.boks2:hover {
-  transform: scale(1.05);
-}
-
-
-
