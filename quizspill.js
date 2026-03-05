@@ -12,7 +12,7 @@ let ballY = window.innerHeight * 0.8
 let fartX = 3
 let fartY = -3
 
-let barX = window.innerWidth / 2 - 100
+let barX = bar.offsetLeft
 
 targets.forEach((target, indeks) => {
     if (window.innerWidth < 900 && indeks >= 3) {
@@ -21,7 +21,7 @@ targets.forEach((target, indeks) => {
     }
     const randomTop = Math.random() * 60 + 5    // mellom 5% og 65% ned
     const randomLeft = Math.random() * 80 + 10  // mellom 10% og 90% bortover
-    target.style.top = randomTop + "%"
+    target.style.top = `calc(${randomTop}% + 50px)`
     target.style.left = randomLeft + "%"
 })
 
@@ -38,11 +38,12 @@ const spørsmål = [
     { tekst: "Hva er neste tall i tallfølgen: 3, 6, 9, 12, ?", fasit: "15" },
     { tekst: "Finn prikkproduktet av vektorene (1,2,3) og (4,0,-1)", fasit: "1" }
 ]
-
-document.addEventListener("keydown", function (event) {
-    if (event.key === "ArrowLeft") barX -= 30
-    if (event.key === "ArrowRight") barX += 30
+const barBredde = bar.offsetWidth
+document.addEventListener("keydown", e => {
+    if (e.key === "ArrowLeft") barX -= 30
+    else if (e.key === "ArrowRight") barX += 30
     bar.style.left = barX + "px"
+    barX = Math.max(0, Math.min(barX, window.innerWidth - barBredde))
 })
 
 
@@ -91,7 +92,8 @@ function oppdater() {
     ball.style.top = ballY + "px"
 
     // Sprett på vegger og tak
-    if (ballX <= 0 || ballX >= window.innerWidth - 20) fartX = -fartX
+    const ballSize = ball.offsetWidth
+    if (ballX <= 0 || ballX >= window.innerWidth - ballSize) fartX = -fartX
     if (ballY <= 0) fartY = -fartY
 
     const ballRect = ball.getBoundingClientRect()
@@ -117,7 +119,13 @@ function oppdater() {
 
     if (ballY > window.innerHeight) {
         pause = true
-        alert("Game over!")
+        if (confirm("Game over! Prøv igjen?")) {
+            ballX = window.innerWidth / 2
+            ballY = window.innerHeight * 0.8
+            fartX = 3
+            fartY = -3
+            pause = false
+        }
     }
 }
 
