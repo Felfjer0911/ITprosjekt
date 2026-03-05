@@ -25,7 +25,7 @@ const spørsmål = [
     { tekst: "Finn lengden av vektoren v = (2, -1, 2)", fasit: "3" },
     { tekst: "Hva er tan(45°)?", fasit: "1" },
     { tekst: "Konvergerer rekken Σ(1/n²) eller divergerer den? (svar: konvergerer eller divergerer)", fasit: "konvergerer" },
-    { tekst: "Hva er neste tall i tallfølgen: 2, 5, 11, 23, ?", fasit: "47" }
+    { tekst: "Hva er neste tall i tallfølgen: 2, 5, 11, 23, ?", fasit: "47" },
     { tekst: "Finn prikkproduktet av vektorene (1,2,3) og (4,0,-1)", fasit: "1" }
 ]
 
