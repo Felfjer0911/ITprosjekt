@@ -2,24 +2,91 @@
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+NZ+Basic+Guides&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@700&family=Outfit:wght@300;400;500&display=swap');
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+}
+
 .hero h1 {
     font-family: 'Fraunces', serif;
     text-transform: uppercase;
-    color: palevioletred;
+    color: white;
     font-size: 85px;
-    padding-top: 40px;
+    padding-top: 25px;
+    letter-spacing: 4px;
 }
 
-h2 {
-    text-align: center;
-    font-family: "Playwrite NZ Basic Guides", cursive;
-    font-weight: 400;
-    font-style: normal;
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 18px 48px;
+    background: rgba(26, 10, 16, 0.6);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
 
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.logo-icon {
+    font-size: 28px;
+    color: white;
+    font-family: 'Fraunces', serif;
+}
+
+.logo-text {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: white;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 36px;
+}
+
+nav ul li a {
+    font-size: 15px;
+    color: rgba(255, 245, 248, 0.8);
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: palevioletred;
+}
+
+.hero h2 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    color: rgba(255, 245, 248, 0.85);
+    text-align: center;
+    letter-spacing: 0.5px;
 }
 
 .hero {
-    height: 100vh;
+    min-height: 100vh;
     background-image: url(media/bakgrunn.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -34,7 +101,6 @@ h2 {
 }
 
 .hero::before {
-    /* mørkt lag "oppå" bakgrunnsbildet - semi transparent */
     content: "";
     position: absolute;
     inset: 0;
@@ -42,35 +108,72 @@ h2 {
 }
 
 .hero>* {
-    /* Disse tingene må ligge oppå det mørke laget */
-    z-index: 4;
+    position: relative;
+    z-index: 1;
 }
 
 .bokser {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    gap: 40px;
+    gap: 60px;
     margin-top: 40px;
 }
 
-.boks1,
-.boks2 {
-    height: 350px;
-    border: none;
+
+.kort {
+    width: 300px;
+    height: 340px;
     border-radius: 20px;
-    width: 350px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 40px;
-    transform: scale(1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     background-size: cover;
     background-position: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    color: white;
+    transition: transform 0.3s;
+}
+
+.kort::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, transparent 60%);
+}
+
+.kort:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+
+.card-body {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.card-body i {
+    font-size: 30px;
+    color: palevioletred;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.card-label {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+}
+
+.card-sub {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255, 245, 248, 0.65);
+    margin-top: 4px;
 }
 
 
@@ -78,7 +181,7 @@ h2 {
     background-image: url(media/kalkbakgrun.png);
 }
 
-.boks2{
+.boks2 {
     background-image: url(media/quiz.png);
 }
 
@@ -88,7 +191,17 @@ h2 {
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
 }
 
-a {
-    color: inherit;
-    text-decoration: none
+@media (max-width: 600px) {
+
+    nav {
+        justify-content: center;
+    }
+
+    .bokser {
+        flex-direction: column;
+    }
+
+    .hero {
+        padding-top: 80px;
+    }
 }

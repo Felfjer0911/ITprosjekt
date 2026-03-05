@@ -7,16 +7,32 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 
 
 </head>
 
 <body>
+    <header>
+
+        <nav>
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">Σ</span>
+                <span class="logo-text">Matte</span>
+            </a>
+
+            <ul>
+                <li><a href="index.html"><i class="fa-solid fa-house"></i></a></li>
+                <li><a href="kalkulator.html">Kalkulator</a></li>
+                <li><a href="quizspill.html">Mattequiz</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <section class="hero">
 
-        <h1>Matteside</h1>
+        <h1>Matte</h1>
 
         <h2>Velkommen til denne skikkelig kule nettsiden om Mattematikk!</h2>
         <h2>Her får du mange muligheter til å drive med matte-relaterte ting!</h2>
@@ -24,19 +40,23 @@
 
 
         <div class="bokser">
-            <div>
-                <a href="kalkulator.html">
-                    <div class="boks1"></div>
-                </a>
 
-            </div>
-            <div>
-                <a href="quizspill.html">
-                    <div class="boks2">
-                        <p>Mattequiz</p>
-                    </div>
-                </a>
-            </div>
+            <a href="kalkulator.html" class="kort boks1">
+                <div class="card-body">
+                    <i class="fa-solid fa-calculator"></i>
+                    <div class="card-label">Kalkulator</div>
+                    <div class="card-sub">Regn ut hva som helst</div>
+                </div>
+            </a>
+
+            <a href="quizspill.html" class="kort boks2">
+                <div class="card-body">
+                    <i class="fa-solid fa-brain"></i>
+                    <div class="card-label">Mattequiz</div>
+                    <div class="card-sub">Test kunnskapene dine</div>
+                </div>
+            </a>
+        </div>
 
     </section>
 </body>
