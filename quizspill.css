@@ -276,4 +276,22 @@
          width: 30px;
          height: 30px;
      }
+
+
+ }
+
+
+ @media (max-width: 600px) {
+
+     nav {
+         justify-content: center;
+     }
+
+     .bokser {
+         flex-direction: column;
+     }
+
+     .hero {
+         padding-top: 80px;
+     }
  }

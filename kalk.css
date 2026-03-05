@@ -174,3 +174,19 @@ main{
     gap: 30px;
     border-radius: 10px;
 }
+
+
+@media (max-width: 600px) {
+
+    nav {
+        justify-content: center;
+    }
+
+    .bokser {
+        flex-direction: column;
+    }
+
+    .hero {
+        padding-top: 80px;
+    }
+}
