@@ -16,7 +16,7 @@ body {
     font-family: 'Fraunces', serif;
     text-transform: uppercase;
     color: white;
-    font-size: 85px;
+    font-size: 75px;
     padding-top: 25px;
     letter-spacing: 4px;
 }
@@ -101,6 +101,8 @@ nav a:hover {
     justify-content: center;
     gap: 16px;
     position: relative;
+    padding-bottom: 70px;
+    padding-top: 85px;
 }
 
 .hero::before {
@@ -194,6 +196,56 @@ nav a:hover {
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
 }
 
+footer {
+    background: rgba(26, 10, 16, 0.95);
+    color: rgba(255, 245, 248, 0.8);
+    padding: 48px 48px 24px;
+}
+
+.footer-innhold {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.footer-innhold h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: palevioletred;
+    margin-bottom: 8px;
+}
+
+.footer-innhold h4 {
+    font-size: 15px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.footer-innhold p,
+.footer-innhold a {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255, 245, 248, 0.65);
+    text-decoration: none;
+}
+
+.footer-innhold ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.footer-bunn {
+    padding-top: 20px;
+    text-align: center;
+    font-size: 13px;
+    color: rgba(255, 245, 248, 0.4);
+}
+
 @media (max-width: 600px) {
 
     nav {
@@ -205,6 +257,10 @@ nav a:hover {
     }
 
     .hero {
-        padding-top: 80px;
+        padding-top: 120px;
+    }
+
+    .hero h1{
+        font-size: 45px;
     }
 }
