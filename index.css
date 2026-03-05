@@ -49,6 +49,9 @@ nav {
     font-size: 28px;
     color: white;
     font-family: 'Fraunces', serif;
+    background-color: palevioletred;
+    padding: 8px;
+    border-radius: 5px;
 }
 
 .logo-text {
