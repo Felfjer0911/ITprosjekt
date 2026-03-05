@@ -110,6 +110,8 @@ function lukkQuiz() {
         alert("🎉 Gratulerer! Du klarte alle fem spørsmålene!")
         return
     }
+
+    pause = false
 }
 
 // Enter-tast som alternativ til å klikke "Sjekk svar"
