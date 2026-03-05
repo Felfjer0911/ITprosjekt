@@ -1,36 +1,26 @@
+// ── Elementer ──────────────────────────────────────────────────
 const ball = document.querySelector(".ball")
 const bar = document.querySelector(".bar")
 const targets = document.querySelectorAll(".target")
-
 const quizPopup = document.getElementById("quiz-popup")
 const quizSpørsmål = document.getElementById("quiz-spørsmål")
 const quizInput = document.getElementById("quiz-input")
 const nesteKnapp = document.getElementById("neste-knapp")
 
+
+// ── Spilltilstand ───────────────────────────────────────────────
 let ballX = window.innerWidth / 2
 let ballY = window.innerHeight * 0.8
 let fartX = 3
 let fartY = -3
-
-let barX = bar.offsetLeft
-
-targets.forEach((target, indeks) => {
-    if (window.innerWidth < 900 && indeks >= 3) {
-        target.style.display = "none"
-        return
-    }
-    const randomTop = Math.random() * 60 + 5    // mellom 5% og 65% ned
-    const randomLeft = Math.random() * 80 + 10  // mellom 10% og 90% bortover
-    target.style.top = `calc(${randomTop}% + 50px)`
-    target.style.left = randomLeft + "%"
-})
-
+let pause = false
 
 let currentFasit = ""
 let spørsmålIndeks = 0
-let pause = false
+let spillStartet = false
 
 
+// ── Spørsmål ────────────────────────────────────────────────────
 const spørsmål = [
     { tekst: "Finn lengden av vektoren v = (2, -1, 2)", fasit: "3" },
     { tekst: "Hva er tan(45°)?", fasit: "1" },
@@ -38,15 +28,39 @@ const spørsmål = [
     { tekst: "Hva er neste tall i tallfølgen: 3, 6, 9, 12, ?", fasit: "15" },
     { tekst: "Finn prikkproduktet av vektorene (1,2,3) og (4,0,-1)", fasit: "1" }
 ]
-const barBredde = bar.offsetWidth
-document.addEventListener("keydown", e => {
-    if (e.key === "ArrowLeft") barX -= 30
-    else if (e.key === "ArrowRight") barX += 30
-    bar.style.left = barX + "px"
-    barX = Math.max(0, Math.min(barX, window.innerWidth - barBredde))
+
+
+// ── Plasser targets tilfeldig ───────────────────────────────────
+targets.forEach((target, indeks) => {
+    // Skjul de siste targetene på små skjermer
+    if (window.innerWidth < 900 && indeks >= 3) {
+        target.style.display = "none"
+        return
+    }
+    const randomTop = Math.random() * 60 + 5   // 5% – 65% ned
+    const randomLeft = Math.random() * 80 + 10  // 10% – 90% bortover
+    target.style.top = `calc(${randomTop}% + 50px)`
+    target.style.left = randomLeft + "%"
 })
 
 
+// ── Bar-bevegelse ───────────────────────────────────────────────
+// offsetLeft/offsetWidth henter faktisk posisjon og bredde fra DOM
+let barX = bar.offsetLeft
+const barBredde = bar.offsetWidth
+
+document.addEventListener("keydown", e => {
+    if (e.key === "ArrowLeft") barX -= 30
+    else if (e.key === "ArrowRight") barX += 30
+
+    // Math.max og Math.min holder baren innenfor skjermen
+    barX = Math.max(0, Math.min(barX, window.innerWidth - barBredde))
+    bar.style.left = barX + "px"
+})
+
+
+// ── Kollisjon ───────────────────────────────────────────────────
+// getBoundingClientRect() gir koordinatene til et element i vinduet
 function kolliderer(rect1, rect2) {
     return (
         rect1.left < rect2.right &&
@@ -56,6 +70,8 @@ function kolliderer(rect1, rect2) {
     )
 }
 
+
+// ── Quiz ────────────────────────────────────────────────────────
 function visQuiz() {
     if (spørsmålIndeks >= spørsmål.length) return
     pause = true
@@ -68,24 +84,29 @@ function visQuiz() {
     quizPopup.classList.remove("skjult")
 }
 
+function sjekkSvar() {
+    const riktig = quizInput.value == currentFasit
+    quizInput.style.backgroundColor = riktig ? "lightgreen" : "lightcoral"
+    nesteKnapp.classList.remove("skjult")
+}
+
 function lukkQuiz() {
     quizPopup.classList.add("skjult")
     spørsmålIndeks++
     pause = false
 }
-function sjekkSvar() {
-    const svar = quizInput.value
-    const riktig = svar == currentFasit
-    quizInput.style.backgroundColor = riktig ? "lightgreen" : "lightcoral"
-    nesteKnapp.classList.remove("skjult")
-}
 
-quizInput.addEventListener("keydown", e => { if (e.key === "Enter") sjekkSvar() })
+// Enter-tast som alternativ til å klikke "Sjekk svar"
+quizInput.addEventListener("keydown", e => {
+    if (e.key === "Enter") sjekkSvar()
+})
 
 
+// ── Spilløkke ───────────────────────────────────────────────────
 function oppdater() {
     if (pause) return
 
+    // Flytt ballen
     ballX += fartX
     ballY += fartY
     ball.style.left = ballX + "px"
@@ -96,20 +117,17 @@ function oppdater() {
     if (ballX <= 0 || ballX >= window.innerWidth - ballSize) fartX = -fartX
     if (ballY <= 0) fartY = -fartY
 
+    // Sprett på baren
     const ballRect = ball.getBoundingClientRect()
     const barRect = bar.getBoundingClientRect()
-
-    // Sprett på baren
     if (kolliderer(ballRect, barRect)) {
         fartY = -Math.abs(fartY)
     }
 
-    // Sjekk kollisjon med mål
+    // Sjekk kollisjon med targets
     targets.forEach(target => {
         if (target.classList.contains("hit")) return
-
         const targetRect = target.getBoundingClientRect()
-
         if (kolliderer(ballRect, targetRect)) {
             target.classList.add("hit")
             fartY = -fartY
@@ -117,6 +135,7 @@ function oppdater() {
         }
     })
 
+    // Game over når ballen faller ut av skjermen
     if (ballY > window.innerHeight) {
         pause = true
         if (confirm("Game over! Prøv igjen?")) {
@@ -129,8 +148,9 @@ function oppdater() {
     }
 }
 
-let spillStartet = false
 
+// ── Start spillet når brukeren scroller ned ─────────────────────
+// setInterval kaller oppdater() hvert 16ms (≈ 60 ganger i sekundet)
 window.addEventListener("scroll", function () {
     if (window.scrollY > 300 && !spillStartet) {
         spillStartet = true
