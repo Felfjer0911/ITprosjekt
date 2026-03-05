@@ -24,8 +24,8 @@ let spillStartet = false
 const spørsmål = [
     { tekst: "Finn lengden av vektoren v = (2, -1, 2)", fasit: "3" },
     { tekst: "Hva er tan(45°)?", fasit: "1" },
-    { tekst: "Er vinkelen mellom vektorene (1,2) og (3,-1) større eller mindre enn 90°? (oppgi: større eller mindre). Skalarproduktet er 1", fasit: "mindre" },
-    { tekst: "Hva er neste tall i tallfølgen: 3, 6, 9, 12, ?", fasit: "15" },
+    { tekst: "Konvergerer rekken Σ(1/n²) eller divergerer den? (svar: konvergerer eller divergerer)", fasit: "konvergerer" },
+    { tekst: "Hva er neste tall i tallfølgen: 2, 5, 11, 23, ?", fasit: "47" }
     { tekst: "Finn prikkproduktet av vektorene (1,2,3) og (4,0,-1)", fasit: "1" }
 ]
 
@@ -84,16 +84,32 @@ function visQuiz() {
     quizPopup.classList.remove("skjult")
 }
 
+const quizMelding = document.getElementById("quiz-melding")
+
 function sjekkSvar() {
     const riktig = quizInput.value == currentFasit
-    quizInput.style.backgroundColor = riktig ? "lightgreen" : "lightcoral"
-    nesteKnapp.classList.remove("skjult")
+    if (riktig) {
+        quizInput.style.backgroundColor = "lightgreen"
+        quizMelding.textContent = "Riktig! 🎉"
+        nesteKnapp.classList.remove("skjult")
+    } else {
+        quizInput.style.backgroundColor = "lightcoral"
+        quizMelding.textContent = "Feil, prøv igjen!"
+        quizInput.value = ""
+    }
 }
 
 function lukkQuiz() {
     quizPopup.classList.add("skjult")
     spørsmålIndeks++
-    pause = false
+    quizMelding.textContent = ""
+
+    // Vis gratulerer hvis alle spørsmål er besvart riktig
+    if (spørsmålIndeks >= spørsmål.length) {
+        pause = true
+        alert("🎉 Gratulerer! Du klarte alle fem spørsmålene!")
+        return
+    }
 }
 
 // Enter-tast som alternativ til å klikke "Sjekk svar"

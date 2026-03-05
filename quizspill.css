@@ -220,6 +220,12 @@
      align-items: center;
  }
 
+ #quiz-melding {
+    font-size: 14px;
+    font-weight: 500;
+    min-height: 20px;
+}
+
  #quiz-boks {
      background-color: white;
      padding: 40px;
