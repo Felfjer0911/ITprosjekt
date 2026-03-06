@@ -4,16 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teoriprøve spill</title>
+    <title>Matte quiz</title>
 
     <link rel="stylesheet" href="quizspill.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
+    <header>
+
+        <nav>
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">Σ</span>
+                <span class="logo-text">Mattelab</span>
+            </a>
+
+            <ul>
+                <li><a href="index.html"><i class="fa-solid fa-house"></i></a></li>
+                <li><a href="kalkulator.html">Kalkulator</a></li>
+                <li><a href="quizspill.html">Mattequiz</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <section class="hero">
         <h1> Matte quiz</h1>
 
-        <p>Dra kula bakover og slipp for å skyte. Treff en kule og svar på spørsmålet!</p>
+        <p>Scroll ned og skytt kuler – for hvert treff får du et mattespørsmål. Klarer du alle fem?</p>
         <div class="boble boble-1"></div>
         <div class="boble boble-2"></div>
         <div class="boble boble-3"></div>
@@ -36,13 +53,39 @@
         <div id="quiz-popup" class="skjult">
             <div id="quiz-boks">
                 <h2 id="quiz-spørsmål">Spørsmål her</h2>
-                <input type="text" id="quiz-input" onkeydown="handleEnter(event, currentFasit, this)"
-                    placeholder="Skriv svar...">
-                <button onclick="sjekkSvarMedInput(currentFasit, this)">Sjekk svar</button>
+                <input type="text" id="quiz-input" placeholder="Skriv svar...">
+                <button onclick="sjekkSvar()">Sjekk svar</button>
                 <button id="neste-knapp" class="skjult" onclick="lukkQuiz()">Neste</button>
+                <p id="quiz-melding"></p>
             </div>
         </div>
+
     </section>
+    <footer>
+        <div class="footer-innhold">
+            <div>
+                <h3>Mattelab</h3>
+                <p>Din side for kalkulator og mattequiz.</p>
+            </div>
+
+            <div>
+                <h4>Sider</h4>
+                <ul>
+                    <li><a href="kalkulator.html">Kalkulator</a></li>
+                    <li><a href="quizspill.html">Mattequiz</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Kontakt</h4>
+                <p>mattelab@hjelp.com</p>
+            </div>
+        </div>
+
+        <div class="footer-bunn">
+            <p>© 2026 Mattelab</p>
+        </div>
+    </footer>
 
     <script src="quizspill.js"></script>
 </body>
