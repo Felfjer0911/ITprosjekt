@@ -9,6 +9,10 @@
      font-family: 'Outfit', sans-serif;
  }
 
+ html {
+     scroll-behavior: smooth;
+ }
+
  * {
      padding: 0;
      margin: 0;
@@ -137,6 +141,16 @@
      right: 16%;
  }
 
+ .pil-ned {
+     font-size: 45px;
+     color: white;
+     text-decoration: none;
+ }
+
+ .pil-ned:hover {
+     color: palevioletred;
+ }
+
  .game {
      height: 100vh;
      background-color: lightpink;
@@ -203,10 +217,10 @@
  }
 
  #quiz-melding {
-    font-size: 14px;
-    font-weight: 500;
-    min-height: 20px;
-}
+     font-size: 14px;
+     font-weight: 500;
+     min-height: 20px;
+ }
 
  #quiz-boks {
      background-color: white;
@@ -249,55 +263,55 @@
      display: none !important;
  }
 
-footer {
-    background: rgba(26, 10, 16, 0.95);
-    color: rgba(255, 245, 248, 0.8);
-    padding: 48px 48px 24px;
-}
+ footer {
+     background: rgba(26, 10, 16, 0.95);
+     color: rgba(255, 245, 248, 0.8);
+     padding: 48px 48px 24px;
+ }
 
-.footer-innhold {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 32px;
-    padding-bottom: 32px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-}
+ .footer-innhold {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-between;
+     gap: 32px;
+     padding-bottom: 32px;
+     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+ }
 
-.footer-innhold h3 {
-    font-family: 'Fraunces', serif;
-    font-size: 22px;
-    color: palevioletred;
-    margin-bottom: 8px;
-}
+ .footer-innhold h3 {
+     font-family: 'Fraunces', serif;
+     font-size: 22px;
+     color: palevioletred;
+     margin-bottom: 8px;
+ }
 
-.footer-innhold h4 {
-    font-size: 15px;
-    color: white;
-    margin-bottom: 10px;
-}
+ .footer-innhold h4 {
+     font-size: 15px;
+     color: white;
+     margin-bottom: 10px;
+ }
 
-.footer-innhold p,
-.footer-innhold a {
-    font-size: 14px;
-    font-weight: 300;
-    color: rgba(255, 245, 248, 0.65);
-    text-decoration: none;
-}
+ .footer-innhold p,
+ .footer-innhold a {
+     font-size: 14px;
+     font-weight: 300;
+     color: rgba(255, 245, 248, 0.65);
+     text-decoration: none;
+ }
 
-.footer-innhold ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
+ .footer-innhold ul {
+     list-style: none;
+     display: flex;
+     flex-direction: column;
+     gap: 6px;
+ }
 
-.footer-bunn {
-    padding-top: 20px;
-    text-align: center;
-    font-size: 13px;
-    color: rgba(255, 245, 248, 0.4);
-}
+ .footer-bunn {
+     padding-top: 20px;
+     text-align: center;
+     font-size: 13px;
+     color: rgba(255, 245, 248, 0.4);
+ }
 
  @media (max-width: 900px) {
      .ball {
@@ -331,11 +345,11 @@ footer {
          padding-top: 80px;
      }
 
-    .hero h1{
-        font-size: 45px;
-    }
+     .hero h1 {
+         font-size: 45px;
+     }
 
-     #quiz-boks{
-        width: 250px;
+     #quiz-boks {
+         width: 250px;
      }
  }

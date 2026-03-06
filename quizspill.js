@@ -169,9 +169,9 @@ function oppdater() {
 
 // ── Start spillet når brukeren scroller ned ─────────────────────
 // setInterval kaller oppdater() hvert 16ms (≈ 60 ganger i sekundet)
-window.addEventListener("scroll", function () {
-    if (window.scrollY > 400 && !spillStartet) {
+function startSpill() {
+    if (!spillStartet) {
         spillStartet = true
         setInterval(oppdater, 16)
     }
-})
+}
