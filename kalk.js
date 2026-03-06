@@ -7,6 +7,7 @@ let add = false
 let minus = false
 let times = false
 let divide = false
+let point = false
 
 
 const outputElm = document.querySelector(".output p")
