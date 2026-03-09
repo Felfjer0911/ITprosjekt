@@ -108,6 +108,7 @@ function lukkQuiz() {
     if (spørsmålIndeks >= spørsmål.length) {
         pause = true
         alert("🎉 Gratulerer! Du klarte alle fem spørsmålene!")
+        window.location.href = "#"
         return
     }
 
@@ -156,22 +157,18 @@ function oppdater() {
     // Game over når ballen faller ut av skjermen
     if (ballY > window.innerHeight) {
         pause = true
-        if (confirm("Game over! Prøv igjen?")) {
-            ballX = window.innerWidth / 2
-            ballY = window.innerHeight * 0.8
-            fartX = 3
-            fartY = -3
-            pause = false
-        }
+        alert("Game over!")
+        window.location.href = "#"
+        location.reload()
     }
 }
 
 
 // ── Start spillet når brukeren scroller ned ─────────────────────
 // setInterval kaller oppdater() hvert 16ms (≈ 60 ganger i sekundet)
-window.addEventListener("scroll", function () {
-    if (window.scrollY > 300 && !spillStartet) {
+function startSpill() {
+    if (!spillStartet) {
         spillStartet = true
         setInterval(oppdater, 16)
     }
-})
+}
